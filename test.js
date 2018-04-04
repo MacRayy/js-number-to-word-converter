@@ -36,7 +36,7 @@ test('Test buildDecimal function', (t) => {
 
 test('Test for splitting the number into smaller arrays', (t) => {
 	t.deepEqual(NumberToStringConverter.splitIntoThreeDigits(11), ['11']),
-	t.deepEqual(NumberToStringConverter.splitIntoThreeDigits(111), ['1', '11']),
+	t.deepEqual(NumberToStringConverter.splitIntoThreeDigits(111), ['111']),
 	t.deepEqual(NumberToStringConverter.splitIntoThreeDigits(1222), ['1', '222']),
 	t.deepEqual(NumberToStringConverter.splitIntoThreeDigits(11222), ['11', '222']),
 	t.deepEqual(NumberToStringConverter.splitIntoThreeDigits(111222), ['111', '222']),
@@ -67,17 +67,19 @@ test('Test for three digit number', (t) => {
 })
 
 test('Test for four digit number', (t) => {
-	t.equal(NumberToStringConverter.createWord(2000), 'twenty hundred')
-	t.equal(NumberToStringConverter.createWord(2001), 'twenty hundred and one')
-	t.equal(NumberToStringConverter.createWord(2011), 'twenty hundred and eleven')
-	t.equal(NumberToStringConverter.createWord(2055), 'twenty hundred and fifty-five')
-	t.equal(NumberToStringConverter.createWord(2202), 'twenty-two hundred and two')
-	t.equal(NumberToStringConverter.createWord(2211), 'twenty-two hundred and eleven')
-	t.equal(NumberToStringConverter.createWord(2222), 'twenty-two hundred and twenty-two')
+	t.equal(NumberToStringConverter.createWord(2000), 'two thousand')
+	t.equal(NumberToStringConverter.createWord(2001), 'two thousand and one')
+	t.equal(NumberToStringConverter.createWord(2011), 'two thousand and eleven')
+	t.equal(NumberToStringConverter.createWord(2055), 'two thousand and fifty-five')
+	t.equal(NumberToStringConverter.createWord(2202), 'two thousand two hundred and two')
+	t.equal(NumberToStringConverter.createWord(2211), 'two thousand two hundred and eleven')
+	t.equal(NumberToStringConverter.createWord(2222), 'two thousand two hundred and twenty-two')
 	t.end()
 })
 
 test('Test for big numbers', (t) => {
+	t.equal(NumberToStringConverter.createWord(1000000), 'one million')
+	t.equal(NumberToStringConverter.createWord(1000001), 'one million  and one')
 	t.equal(NumberToStringConverter.createWord(123456789), 'one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine')
 	t.equal(NumberToStringConverter.createWord(123456789.98), 'one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine point nine eight')
 	t.end()

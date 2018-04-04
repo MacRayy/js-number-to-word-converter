@@ -31,7 +31,7 @@ const NumberToStringConverter = (function () {
 		80: 'eighty',
 		90: 'ninety'
 	}
-	const scale = ['ten', 'hundred', 'thousand', 'million', 'billion']
+	const scale = ['hundred', 'thousand', 'million', 'billion']
 
 	// CRETE WORD FROM NUMBER
 	const createWord = (number) => {
@@ -49,16 +49,7 @@ const NumberToStringConverter = (function () {
 			let wordArray = digitGroups.map(el => createHundreds(parseInt(el)))
 
 			let wordArrayWithScale = wordArray.reverse().map((el, index) => {
-				if (num >= 10000) {
-					index++
-					if (el !== '' && index > 1) {
-						return addScale(el, index)
-					} else {
-						index--
-						return addScale(el, index)
-					}
-
-				} else if (num < 10000 && el !== '') {
+				if (el !== '') {
 					return addScale(el, index)
 				}
 			})
@@ -96,25 +87,15 @@ const NumberToStringConverter = (function () {
 		const digitGroups = []
 
 		let numStr = number.toString()
-		let counter = numStr.length
 
-		if (numStr.length > 4) {
+		if (numStr.length >= 3) {
+			let counter = numStr.length
 
 			while (counter > 0) {
 				counter -= 3
 				digitGroups.unshift(numStr.slice(counter))
 				numStr = numStr.slice(0, counter)
 				if (numStr.length === 2) {
-					digitGroups.unshift(numStr)
-					break
-				}
-			}
-		} else if (numStr.length >=  2) {
-			while (counter > 0) {
-				counter -= 2
-				digitGroups.unshift(numStr.slice(counter))
-				numStr = numStr.slice(0, counter)
-				if (numStr.length === 1) {
 					digitGroups.unshift(numStr)
 					break
 				}
