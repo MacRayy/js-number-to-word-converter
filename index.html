@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+
+		<title>JS Numerals</title>
+	</head>
+	<body>
+		<div class="page">
+			<header class="header">
+				<h1 class="heading">Numbers to words converter</h1>
+			</header>
+
+			<main class="content">
+				<p class="text">I can translate an arabic number into english words!</p>
+
+				<section class="form__container">
+					<input id="number" type="number" class="form__input">
+					<label for="number" class="form__label">Give me a number</label>
+					<button class="btn">Convert</button>
+				</section>
+
+				<p class="text">Here is the word:</p>
+				<p id="phrase" class="text"></p>
+			</main>
+		</div>
+
+		<script type="module" src="app.js"></script>
+	</body>
+</html>
